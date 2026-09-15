@@ -125,6 +125,19 @@ When proposing a change, show the request and what went wrong. Explain how the c
 
 The starting references were locally installed copies of their grilling, prototype, TDD, and Ponytail skills, read in September 2026. Those copies may differ from the latest upstream versions. We wrote FAFO's skill text from scratch. Neither project is a dependency, and neither has endorsed FAFO.
 
+## Further reading
+
+These works explore ideas that FAFO shares. They are useful context, not endorsements of FAFO or evidence that its approach improves coding-agent results.
+
+- **The Pragmatic Programmer — Andrew Hunt and David Thomas.** Prototypes help you learn; tracer bullets establish a thin working path through a system and let feedback guide development. See the [authors' book tips](https://secure.pragprog.com/tips/).
+- **Lean Software Development: An Agile Toolkit — Mary and Tom Poppendieck.** Amplify learning, eliminate waste, and preserve options until decisions need to be made. The [publisher's contents](https://www.informit.com/store/lean-software-development-an-agile-toolkit-an-agile-9780133812930) identify the relevant chapters.
+- **Lessons Learned in Software Testing — Cem Kaner, James Bach, and Bret Pettichord.** Choose testing practices for the situation and judge tests by the information they provide. The [authors' published principles](https://context-driven-testing.com/) also explain why expected results can be wrong. This supports purposeful testing, not fewer tests by default.
+- **Agile Software Development: The Cooperative Game — Alistair Cockburn.** Development as invention and communication, with methodologies adapted to the people and work. See the [publisher's description](https://www.informit.com/store/agile-software-development-the-cooperative-game-9780321482754).
+- **“Programming as Theory Building” — Peter Naur.** This 1985 essay, reproduced in Cockburn's book, treats programmers' understanding as central and challenges a universal sequence of development activities. Read [“Method and Theory Building” in the essay](https://gwern.net/doc/cs/algorithm/1985-naur.pdf). Its argument concerns human understanding; applying it to agent-assisted work is our interpretation.
+- **A Philosophy of Software Design — John Ousterhout.** A perspective on managing complexity. For his specific criticism of test-first development, see his separate [Stanford testing notes](https://web.stanford.edu/~ouster/cgi-bin/cs190-spring16/lecture.php?topic=testing). He also advocates extensive unit testing; agreement on one criticism does not imply agreement on every testing choice.
+
+FAFO's concern about cheap generation creating expensive review and maintenance work needs evaluation in real agent-assisted projects. These sources give it a foundation, not a proof. The same judgment applies to FAFO itself: when writing a test first is the best way to resolve an uncertainty, use it.
+
 ## License
 
 Original skill text and documentation: [MIT](LICENSE). The sourced meme image is excluded; see [asset provenance](assets/README.md).
