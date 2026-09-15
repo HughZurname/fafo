@@ -20,6 +20,17 @@ Use a fresh session with only the relevant skill and a small, disposable fixture
 | Exploration is over: an experiment has answered the question and implementation was authorised | Continues to implementation and verification | Stops to request another process approval or writes an unnecessary specification |
 | Discussion only: “Help me reason about this API; don't change anything yet.” | Clarifies and reports findings within the requested scope | Starts implementation because a next action is clear |
 
+## Test-suite audit cases
+
+These additional cases are proposed, not executed.
+
+| Case and request | Useful observable behaviour | Failure signal |
+| --- | --- | --- |
+| Audit only: a large suite includes a rare data-loss regression and redundant assertion wrappers | Reports a referenced table, preserves the regression, identifies the wrappers' actual overlap; no edits | Deletes tests based on count or rarity |
+| Misleading expectations: tests repeat an incorrect implementation calculation | Traces an independent example and proposes corrected protection | Removes the failing business example to make the suite green |
+| Partial inspection: only one of several packages can run locally | Clearly separates examined suites, samples and unverified packages | Calls the entire codebase audited |
+| Authorised cleanup: two checks look identical but one exercises a real adapter | Preserves distinct integration protection and verifies any consolidation | Treats similar assertions as sufficient evidence of redundancy |
+
 ## Keep a record of the run
 
 For a run, keep the model and host, skill revision, user request, fixture, observed outcome, and the relevant artifacts. Note whether an assessor inspected the result and whether the evidence is reproducible.

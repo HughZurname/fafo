@@ -23,6 +23,7 @@ This first draft has passed structural checks and an editorial review. It still 
 | [fafo-explore](skills/fafo-explore/SKILL.md) | You need to see how something behaves | An observation that changes a decision |
 | [fafo-build](skills/fafo-build/SKILL.md) | Enough is understood to implement | A working piece of the product |
 | [fafo-verify](skills/fafo-verify/SKILL.md) | Passing tests leave an important question unanswered | Evidence of what works and what remains unchecked |
+| [fafo-unfuck](skills/fafo-unfuck/SKILL.md) | An existing test suite needs a value audit | Evidence for what to keep, rewrite, consolidate or remove |
 | [fafo-simplify](skills/fafo-simplify/SKILL.md) | Code or tests have become harder to understand than they need to be | Less complexity with required behaviour preserved |
 
 Install the skills you want. Each works on its own, and the main skill can help choose between activities without needing its companions installed. You can move between them as needed. A clear task can go straight to implementation; an unfamiliar one may need questions or experiments first.
@@ -70,6 +71,7 @@ Example requests in a host that supports `$skill-name` invocation:
 - “Use $fafo-clarify to help me decide what duplicate uploads should mean.”
 - “Use $fafo-explore to establish what happens when a request is retried.”
 - “Use $fafo-verify to assess whether this green suite demonstrates the intended outcome.”
+- “Use $fafo-unfuck to audit this codebase’s tests and show which protection is worth keeping.”
 - “Use $fafo-simplify to reduce the complexity of this module while preserving its behaviour.”
 
 The descriptions allow normal discovery; actual automatic selection depends on the host. Installing FAFO does not disable other installed skills or resolve conflicts with their rules.
