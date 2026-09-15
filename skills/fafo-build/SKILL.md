@@ -5,7 +5,7 @@ description: Implement a coherent product increment from emerging understanding,
 
 # Build
 
-Deliver the requested behaviour with a structure someone can understand and change. Requirements can become clearer while implementation proceeds.
+Build the requested behaviour in code someone can understand and change. Expect some requirements to become clearer during the work.
 
 ## Start from the real flow
 
@@ -17,13 +17,13 @@ Prefer existing helpers, standard libraries, platform capabilities, and installe
 
 ## Let implementation teach you
 
-Keep the increment coherent enough to exercise. Add structure when actual responsibilities or repeated use justify it. Do not build speculative extension points or force every increment into one-test/one-function units.
+Build enough of the flow that you can run it and inspect the result. Add structure when actual responsibilities or repeated use justify it. Do not build speculative extension points or force every increment into one-test/one-function units.
 
-If a dependency or domain assumption proves wrong, pause only the dependent work, obtain the missing evidence, and revise the approach. Involve the user when the desired outcome or a consequential tradeoff changes. Do not silently lower the requirement to fit the implementation.
+If a dependency or domain assumption proves wrong, pause only the dependent work, obtain the missing evidence, and revise the approach. Involve the user when the desired outcome or a consequential tradeoff changes. If the implementation falls short, address that directly; do not quietly change what counts as success.
 
 Choose the order of code and checks based on the uncertainty. An existing failing regression can be the best starting point; an unfamiliar interaction may require a probe first. Preserve meaningful checks and follow actual project requirements.
 
-## Finish the useful increment
+## Finish the increment
 
 Exercise the user-visible result and consequential failure conditions. A working happy path alone is insufficient when retries, partial failure, permissions, or state transitions materially affect the outcome.
 

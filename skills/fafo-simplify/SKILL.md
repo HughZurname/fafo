@@ -7,15 +7,17 @@ description: Reduce demonstrated complexity in code, tests, or development artif
 
 Reduce the cost of understanding and changing the system. Fewer lines are useful only when the result is clearer and still correct.
 
-## Understand what the machinery buys
+## Understand why it exists
 
 Trace the behaviour and callers before removing or combining anything. Identify the actual burden: duplicated logic, unnecessary indirection, redundant checks, speculative configuration, or records that no longer communicate a useful decision.
 
-Consider existing helpers, language and platform features, and installed dependencies before custom machinery. Choose the simplest adequate option for the real requirements. An extra dependency may reduce local code while increasing operational or maintenance cost.
+Consider existing helpers, language and platform features, and installed dependencies before custom machinery. Choose the simplest option that meets the requirements. A dependency can save code but create more work to operate or maintain.
+
+For architectural friction, a before-and-after diagram can show how many places someone must visit to understand one responsibility. Base the current picture on inspected code and label the alternative as proposed. Explain which complexity disappears or moves; fewer boxes alone do not establish an improvement. Prefer a diagram in the conversation to a separate report unless the user needs a shareable artifact.
 
 Do not replace a requested feature with a smaller feature. Challenge a questionable requirement openly; preserve it unless the user agrees to a changed outcome.
 
-## Make a scoped reduction
+## Reduce the burden
 
 Consolidate duplicated responsibilities and remove demonstrated dead or speculative structure within the authorised scope. Prefer readable code over compressed expressions. Keep abstractions that explain real domain boundaries or isolate meaningful change.
 
@@ -25,4 +27,4 @@ For documentation, preserve decisions and reproduction details that future work 
 
 Retain safeguards, data integrity, accessibility, and explicit compatibility constraints. If a proposed simplification introduces a real limit, explain it where maintainers need it; do not add ritual annotations to ordinary code.
 
-Run checks appropriate to the affected behaviour. Report the concrete burden removed and the evidence that required behaviour remains. Do not invent token savings or productivity metrics. Finish when the scoped burden is reduced; do not expand a local cleanup into a repository-wide audit.
+Run checks appropriate to the affected behaviour. Report the concrete burden removed and the evidence that required behaviour remains. Do not invent token savings or productivity metrics. Finish the requested cleanup without expanding it into a repository-wide audit.

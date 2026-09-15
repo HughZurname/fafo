@@ -1,37 +1,59 @@
 # FAFO
 
-**Fuck Around and Find Out. Build enough to learn. Keep what earns its place.**
+Fuck Around and Find Out.
+
+Agent skills for exploring a problem, building a solution, and finding out whether it works.
 
 ![Roger Skaer demonstrating the rising relationship between fucking around and finding out](assets/fafo-graph.jpg)
 
 *The graph that gave the project its name. [Meme source and credit](assets/README.md).*
 
-FAFO is a small collection of agent skills for product development where understanding emerges through the work. Questions, experiments, implementation, and verification inform each other. The next action depends on what needs to be learned or delivered.
+FAFO is a collection of agent skills for figuring out what you're building as you build it. Ask questions, try things in a REPL, get a path through the system working, and revisit the approach when you learn something new.
 
-Generating code is cheap relative to understanding everything it leaves behind. Tests, abstractions, and specifications all consume attention. FAFO asks what each artifact contributes and keeps room to revise an early decision.
+An agent can generate a huge test suite before you've worked out whether its assumptions make sense. Someone then has to read and maintain it. FAFO puts that cost into the decision: what does this test, abstraction, or document help us understand or protect?
 
-This is an initial working draft. The package has structural validation and an editorial review; behavioural effectiveness remains to be established in real sessions. See [evaluation cases](docs/evaluation.md).
+This first draft has passed structural checks and an editorial review. It still needs use in real development sessions. The [evaluation cases](docs/evaluation.md) describe how to assess it.
 
 ## The skills
 
 | Skill | Useful when | Result |
 | --- | --- | --- |
-| [fafo](skills/fafo/SKILL.md) | Work needs to move between discovery and delivery | A useful next action and continuity between modes |
-| [fafo-clarify](skills/fafo-clarify/SKILL.md) | A consequential product decision is unclear | Enough shared understanding to proceed |
-| [fafo-explore](skills/fafo-explore/SKILL.md) | Behaviour or solution shape needs investigation | An observation that changes a decision |
-| [fafo-build](skills/fafo-build/SKILL.md) | Enough is understood to implement | A coherent, working increment |
-| [fafo-verify](skills/fafo-verify/SKILL.md) | A claim needs evidence beyond a green suite | Focused evidence and explicit limits |
-| [fafo-simplify](skills/fafo-simplify/SKILL.md) | Accumulated machinery obscures the work | Less complexity with required behaviour preserved |
+| [fafo](skills/fafo/SKILL.md) | Work needs to move between discovery and delivery | A next action that fits what is known |
+| [fafo-clarify](skills/fafo-clarify/SKILL.md) | A product decision is holding up the work | Enough shared understanding to proceed |
+| [fafo-explore](skills/fafo-explore/SKILL.md) | You need to see how something behaves | An observation that changes a decision |
+| [fafo-build](skills/fafo-build/SKILL.md) | Enough is understood to implement | A working piece of the product |
+| [fafo-verify](skills/fafo-verify/SKILL.md) | Passing tests leave an important question unanswered | Evidence of what works and what remains unchecked |
+| [fafo-simplify](skills/fafo-simplify/SKILL.md) | Code or tests have become harder to understand than they need to be | Less complexity with required behaviour preserved |
 
-Each skill stands alone. The main skill can coordinate the work, but installing it does not require the others. There is no prescribed sequence, compulsory interview, or mandatory specification handoff.
+Install the skills you want. Each works on its own, and the main skill can help choose between activities without needing its companions installed. You can move between them as needed. A clear task can go straight to implementation; an unfamiliar one may need questions or experiments first.
 
 ## Install
 
-Clone [HughZurname/fafo](https://github.com/HughZurname/fafo), then copy the individual skills you want as described below. The repository also contains Codex and Claude Code plugin manifests pointing at the same skill directory. The manifests have not yet been exercised in both hosts.
+Install from [HughZurname/fafo](https://github.com/HughZurname/fafo) with the [Skills CLI](https://skills.sh/docs/cli):
+
+```sh
+npx skills add HughZurname/fafo
+```
+
+Choose the skills and agent in the installer's prompts. To inspect the available skills without installing:
+
+```sh
+npx skills add HughZurname/fafo --list
+```
+
+For an individual skill:
+
+```sh
+npx skills add HughZurname/fafo --skill fafo-explore
+```
+
+You can also clone the repository and copy the folders as described below. Codex and Claude Code plugin manifests point to the same skill directory. Installation through both hosts still needs checking.
+
+The [skills.sh FAQ](https://skills.sh/docs/faq) explains that directory listings and rankings come from installation telemetry. Hosting a repository makes it installable; it does not guarantee immediate directory visibility.
 
 ## Use locally
 
-Copy the folders you want from `skills/` into the skill directory supported by your agent. Each folder contains a standard `SKILL.md` with a name and description. No runtime dependencies, custom commands, or external services are required by this package.
+Copy the folders you want from `skills/` into the skill directory supported by your agent. Each folder contains a standard `SKILL.md` with a name and description. The package needs no runtime dependencies, custom commands, or external services.
 
 For Codex, copy selected folders into `~/.codex/skills/`, keeping the folder names. For example, from this repository:
 
@@ -52,46 +74,56 @@ Example requests in a host that supports `$skill-name` invocation:
 
 The descriptions allow normal discovery; actual automatic selection depends on the host. Installing FAFO does not disable other installed skills or resolve conflicts with their rules.
 
-## Principles
+## How we approach the work
 
-### Understanding is provisional
+### Leave room to change your mind
 
-A product's needs and a solution's shape can become clearer during implementation. Questions and executable experiments expose assumptions. A note or test can capture an understanding without making it irreversible.
+Requirements often take shape during development. A question or a small experiment can expose something the original plan missed. Keep the current understanding in notes or tests when that helps, and revise it when the evidence changes.
 
-### Evidence must be able to disagree
+### Give tests something independent to check
 
-Generated tests can inherit the assumptions of generated code. Confidence improves when expected results come from user-grounded examples, domain rules, independent calculations, or external contracts. A real integration exercise supports a different claim from a test against mocked collaborators.
+A model can put the same mistake in the code and its tests. Expected results need a separate basis: an example grounded in the user's intent, a domain rule, a worked calculation, or an external contract. Testing against a mock tells you less about integration than exercising the real components.
 
-### Artifacts have an ongoing cost
+### Account for what you leave behind
 
-A test earns its maintenance cost by detecting a meaningful failure. An abstraction earns its place by expressing a real responsibility. A document earns its place by preserving consequential understanding. There are no universal quotas.
+Every test needs a failure it can detect. Abstractions should explain responsibilities in the code, and documentation should preserve something worth knowing. Fixed quotas for any of these miss the point: their benefit has to justify the time spent understanding and maintaining them.
 
-### A steel thread anchors the system
+### Get a steel thread working
 
-A steel thread is a narrow working path from an initiating action through the necessary components to a useful result. It exposes integration assumptions. Its happy path is an anchor; consequential rejection, retry, and partial-failure behaviour still need attention.
+A steel thread is a narrow path from an initiating action, through the components it depends on, to a useful result. It exposes assumptions about how the pieces fit together. Once it works, check the failures that matter too, such as a rejected request, a retry, or an operation that stops halfway through.
 
-### Handoffs preserve momentum
+### Hand over what you know
 
-A useful handoff carries the current outcome, evidence, decisions, important unknowns, and the next action. Existing conversations or project records often suffice. Returning to exploration after implementation reveals something new is ordinary progress.
+The next person or session needs the current outcome, the evidence, decisions and their reasons, important unknowns, and a sensible next action. An existing conversation or project record is often enough. If implementation reveals a new problem, go back and investigate it.
+
+## Show the thing you're trying to understand
+
+A diagram can make an assumption easier to question. A sequence diagram might reveal where a retry repeats work; a before-and-after view can show whether an architecture change removes complexity or just moves it.
+
+FAFO uses the conversation's visual capabilities when available. Static relationships may need only a Mermaid diagram or a table. A stateful interaction can justify an interactive view. The host determines what can be displayed, with text sketches as a fallback. A separate HTML report is useful when someone needs to share or keep it, but is not required.
+
+Visuals distinguish what has been observed from what is assumed or proposed. A convincing simulation is still a simulation until its behaviour has been checked against the real system.
+
+See [a visual clarification example](docs/visual-exploration.md).
 
 ## Scope
 
-FAFO is aimed at ordinary product development. It makes no safety-critical assurance claim and supplies no certification process. Verification still scales with the consequences of the change, including data integrity, security, accessibility, and compatibility.
+FAFO is for ordinary product development. It provides no certification process or assurance for safety-critical systems. The amount of verification still depends on what could go wrong, including damage to data, security failures, accessibility problems, and broken compatibility.
 
-Test-first development, short specifications, unit tests, and mocks remain available where useful. FAFO does not prescribe their timing or treat them as universal prerequisites. Existing project requirements and the user's explicit choices still apply.
+Use test-first development, a short specification, unit tests, or mocks when they help. Their timing depends on the work. Follow the project's requirements and the user's explicit choices.
 
 ## Examples and improvement
 
-Read [a worked development story](docs/example.md) to see movement between capabilities. Use [the evaluation cases](docs/evaluation.md) to probe whether a skill makes useful decisions before expanding its instructions.
+The [worked development story](docs/example.md) follows a retry bug through clarification, experiments, and implementation. The [evaluation cases](docs/evaluation.md) cover decisions the skills should handle before we add more instructions.
 
-For a proposed change, provide a real request, the observed failure, and why the proposed instruction would improve that decision. Prefer a narrow correction over a new universal prohibition. Do not include credentials, private customer data, or proprietary source in public examples.
+When proposing a change, show the request and what went wrong. Explain how the change would have helped. Keep the fix specific to the failure, and keep credentials, private customer data, and proprietary source out of public examples.
 
 ## Inspiration
 
-- [Matt Pocock's skills](https://github.com/mattpocock/skills): focused questioning, modular capabilities, and experiments that answer concrete questions.
-- [Ponytail](https://github.com/dietrichgebert/ponytail): reuse, restraint, and reducing unnecessary implementation machinery.
+- [Matt Pocock's skills](https://github.com/mattpocock/skills): questions that challenge an idea and small experiments that help settle it.
+- [Ponytail](https://github.com/dietrichgebert/ponytail): checking what already exists and writing less code when it will do the job.
 
-The initial draft was informed by locally installed versions of their grilling, prototype, TDD, and Ponytail skills, inspected in September 2026. Those copies may differ from current upstream versions. FAFO's skill text is newly written; neither project is a dependency or an endorser.
+The starting references were locally installed copies of their grilling, prototype, TDD, and Ponytail skills, read in September 2026. Those copies may differ from the latest upstream versions. We wrote FAFO's skill text from scratch. Neither project is a dependency, and neither has endorsed FAFO.
 
 ## License
 

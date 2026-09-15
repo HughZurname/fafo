@@ -1,6 +1,6 @@
 # A development session: retrying an upload
 
-This fictional example illustrates decisions, not a required workflow. No system was executed to produce these observations.
+This is a fictional session showing how the skills fit together. The observations below are illustrative; no system was run to produce them.
 
 ## The starting request
 
@@ -8,19 +8,19 @@ This fictional example illustrates decisions, not a required workflow. No system
 
 The code can reveal how requests are retried. It cannot establish whether two deliberate uploads of the same file should create separate items. That distinction needs the user's intent.
 
-## Clarify the consequence
+## Ask what the user means
 
 The user explains that a network retry should return the existing result, while a deliberate second upload should create another item. File content alone is therefore insufficient to identify an accidental retry.
 
-This is enough to explore the request flow. It does not settle the entire API, storage model, or future versioning feature.
+With that distinction settled, the agent can explore the request flow. The rest of the API, storage model, and future versioning feature can remain open.
 
-## Explore the uncertainty
+## Try the request flow
 
 A small experiment in a scratch environment exercises the current upload flow. In this example, it reveals that a client can lose the response after the server has created the item. Retrying the request then creates a second item.
 
-The useful finding is the ambiguous outcome after creation. The next implementation decision concerns identifying the same logical request, rather than detecting identical file content.
+The client cannot tell whether the server created the item. The next implementation decision concerns identifying the same logical request, rather than detecting identical file content.
 
-## Build the useful path
+## Build the retry behaviour
 
 The implementation introduces an identity for one logical upload request using the project's existing mechanisms where possible. The client retains it across retries; a successful retry returns the prior outcome.
 
@@ -39,7 +39,7 @@ Useful evidence would include:
 
 The appropriate test layer depends on the system. A fake storage object cannot demonstrate the real database's concurrency guarantee. It might still help verify a separate mapping rule.
 
-Checks belong where they detect these failures economically. There is no reason to add a test for every helper just because it exists.
+Choose a test layer that catches these failures without unnecessary maintenance work. There is no reason to add a test for every helper just because it exists.
 
 ## Simplify and hand off
 

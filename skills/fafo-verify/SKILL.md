@@ -5,7 +5,7 @@ description: Assess whether implemented behaviour satisfies its intended outcome
 
 # Verify
 
-Challenge consequential claims about the system. Test volume and execution order are not measures of confidence.
+Check the claims that matter to the user. A large suite or a prescribed order of work cannot establish those claims on its own.
 
 ## Establish what would count as correct
 
@@ -27,10 +27,10 @@ Inspect existing checks before adding more. Select checks for plausible defects 
 
 Prefer a layer that can expose the defect reliably with low maintenance cost. Public boundaries often preserve refactoring freedom; a narrowly scoped internal check can be appropriate when it captures important complexity more directly. Do not mock away the very behaviour being verified.
 
-## Keep durable evidence economical
+## Decide what to keep
 
-Before retaining a new test, identify the failure it detects and why existing evidence does not cover it adequately. Keep reusable regression protection for meaningful risks. One-off observations can remain brief findings when permanent machinery adds little value.
+Before keeping a new test, identify the failure it detects and what it adds to the checks already there. Keep reusable regression protection for meaningful risks. One-off observations can remain brief findings when permanent machinery adds little value.
 
-Neither a fixed test quota nor a blanket ban on tests fits every change. Preserve useful existing coverage. Propose redundant-test removal only after inspecting what would be lost and within the user's scope.
+Choose how many tests to keep from the risks and gaps in the existing checks. Preserve useful existing coverage. Propose redundant-test removal only after inspecting what would be lost and within the user's scope.
 
 Report what ran, what was observed, and what remains unverified. Do not call a designed check a passed check, or a simulated integration a verified real integration. Stop expanding verification when consequential claims have proportionate evidence and no unresolved failure justifies another check.

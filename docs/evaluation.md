@@ -1,6 +1,6 @@
 # Behavioural evaluation
 
-These are proposed evaluation cases, not a report of successful agent runs. Structural validation cannot establish that a skill improves behaviour.
+These cases still need to be run. Structural checks can catch packaging problems, but they cannot tell us whether a skill helps an agent make better decisions.
 
 Use a fresh session with only the relevant skill and a small, disposable fixture. Give the agent the request and raw project evidence; keep the assessment criteria separate from its task. Observe actions and artifacts rather than asking it to grade its own compliance. Do not allow live external mutations during an evaluation.
 
@@ -20,13 +20,13 @@ Use a fresh session with only the relevant skill and a small, disposable fixture
 | Exploration is over: an experiment has answered the question and implementation was authorised | Continues to implementation and verification | Stops to request another process approval or writes an unnecessary specification |
 | Discussion only: “Help me reason about this API; don't change anything yet.” | Clarifies and reports findings within the requested scope | Starts implementation because a next action is clear |
 
-## Record only useful evidence
+## Keep a record of the run
 
 For a run, keep the model and host, skill revision, user request, fixture, observed outcome, and the relevant artifacts. Note whether an assessor inspected the result and whether the evidence is reproducible.
 
 Compare with a baseline session when practical. Useful observations include consequential assumptions exposed, distinct defects detected, user interruptions, unnecessary artifacts, and whether required behaviour was preserved. Token counts are useful only if measured by the host, with comparable task conditions.
 
-A disappointing run warrants a targeted change and a rerun of the affected case. Do not grow the skill to cover every imaginable failure.
+When a run exposes a problem, change the relevant instruction and try the case again. Avoid adding rules for failures nobody has observed.
 
 ## Initial package checks
 
