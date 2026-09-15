@@ -1,0 +1,35 @@
+{
+  "name": "fafo",
+  "version": "0.1.0",
+  "description": "Exploratory development skills: clarify, explore, build, verify, and simplify as understanding emerges.",
+  "author": {
+    "name": "HughZurname",
+    "url": "https://github.com/HughZurname"
+  },
+  "homepage": "https://github.com/HughZurname/fafo",
+  "repository": "https://github.com/HughZurname/fafo",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "exploration",
+    "product-development",
+    "verification"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "FAFO",
+    "shortDescription": "Build enough to learn. Keep what earns its place.",
+    "longDescription": "Exploratory development skills: clarify, explore, build, verify, and simplify as understanding emerges.",
+    "developerName": "HughZurname",
+    "category": "Productivity",
+    "capabilities": [
+      "Instructions"
+    ],
+    "websiteURL": "https://github.com/HughZurname/fafo",
+    "defaultPrompt": [
+      "Explore the uncertainty in this feature.",
+      "Build a useful increment from these findings.",
+      "Challenge the evidence that this change works."
+    ]
+  }
+}

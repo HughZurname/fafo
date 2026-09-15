@@ -1,0 +1,19 @@
+{
+  "name": "fafo",
+  "version": "0.1.0",
+  "description": "Exploratory development skills: clarify, explore, build, verify, and simplify as understanding emerges.",
+  "author": {
+    "name": "HughZurname",
+    "url": "https://github.com/HughZurname"
+  },
+  "homepage": "https://github.com/HughZurname/fafo",
+  "repository": "https://github.com/HughZurname/fafo",
+  "license": "MIT",
+  "keywords": [
+    "agent-skills",
+    "exploration",
+    "product-development",
+    "verification"
+  ],
+  "skills": "./skills/"
+}
